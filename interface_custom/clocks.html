@@ -1,0 +1,93 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+	<meta charset="utf-8">
+	<title>Clocks</title>
+	<meta name="description" content="Clocks plugin">
+	<meta name="viewport" content="width=device-width">
+
+</head>
+
+<body>
+
+	<header><h1>Clocks!</h1></header>
+
+
+	<!-- The headers aren't required but they help! Apart from the the mark needs to be as follows  -->
+
+	<div>
+		<h3>Tokyo/Seoul</h3>
+		
+		<div id="tokyo"></div>
+		
+		<span class="date"></span>
+	</div>
+
+	<div>
+		<h3>Taiwan/China</h3>
+		
+		<div id="taiwan"></div>
+		
+		<span class="date"></span>
+	</div>
+
+	<div>
+		<h3>Paris/Dresden</h3>
+		
+		<div id="paris"></div>
+		
+		<span class="date"></span>
+	</div>
+
+	<div>
+		<h3>Chicago</h3>
+		
+		<div id="chicago"></div>
+		
+		<span class="date"></span>
+	</div>
+
+	<!-- jQuery is already included in core so you probably dont need to include this -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+
+	<!-- Raphael is needed for this plugin to work. -->
+	<script src="raphael-min.js"></script>
+	<script src="functions.js"></script>
+
+	<!-- 
+
+	This is where we declare the clock objects. An element id and time difference needs to be specified
+	The drawClock methd takes the follow paramaters:
+
+		- width
+		- fillColor 
+		- strokeColor
+		- pinColor
+		- hourHandColor 
+		- minuteHandColor 
+		-secondHandColor
+
+	 -->
+	<script type="text/javascript">
+
+		var chicagoClock = new Clock("chicago", "-5");
+		chicagoClock.drawClock("75","#fff","#666","#000","#000","#000","#000");
+
+		var tokyoClock = new Clock("tokyo", "9");
+		tokyoClock.drawClock("75","#fff","#666","#000","#000","#000","#000");
+
+		var parisClock = new Clock("paris", "2");
+		parisClock.drawClock("75","#fff","#666","#000","#000","#000","#000");
+
+		var singaporeClock = new Clock("taiwan","8");
+		singaporeClock.drawClock("75","#fff","#666","#000","#000","#000","#000");
+
+	</script>
+  
+</body>
+</html>
