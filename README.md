@@ -14,16 +14,11 @@ Copy this javascript to your project:
 			    this.id = id;
 			    this.diff = diff;
 			  };
-
 			  Clock.prototype.drawClock = function(width, fillColor, strokeColor, pinColor, hourHandColor, minuteHandColor, secondHandColor) {
 			    canvas = Raphael(this.id,width, width);
-
 			    var clock = canvas.circle(width*.5,width*.5, width * .475);
-
 			    clock.attr({"fill":fillColor,"stroke":strokeColor,"stroke-width":(width*.01)})
-
 			    var hour_sign;
-
 			    for(i=0;i<12;i++){
 			      var start_x = width*.5+Math.round((width*.4)*Math.cos(30*i*Math.PI/180));
 			      var start_y = width*.5+Math.round((width*.4)*Math.sin(30*i*Math.PI/180));
@@ -31,7 +26,6 @@ Copy this javascript to your project:
 			      var end_y = width*.5+Math.round((width*.45)*Math.sin(30*i*Math.PI/180));
 			      hour_sign = canvas.path("M"+start_x+" "+start_y+"L"+end_x+" "+end_y);
 			    }
-
 			    this.hour_hand = canvas.path("M" + width*.5 + " " + width*.5 + "L" + width*.5 + " " + (width*.25) + "");
 			    this.hour_hand.attr({stroke: hourHandColor, "stroke-width": width*.03});
 			    this.minute_hand = canvas.path("M" + width*.5 + " " + width*.5 + "L" + width*.5 + " " + (width*.2) + "");
@@ -48,7 +42,6 @@ Copy this javascript to your project:
 			  };
 
 			Clock.prototype.updateClock = function(width) {
-
 			  // get system time
 			  var now = new Date();
 			  var timeZoneTime = (parseInt(now.getHours() + (now.getTimezoneOffset() / 60))) + parseInt(this.diff);
@@ -56,7 +49,6 @@ Copy this javascript to your project:
 			  var target = jQuery(this).attr("id");
 			  // var splitPoint = thisDate.getFullYear();
 			  // var shortDate = thisDate.toLocaleString().split(splitPoint);
-
 
 			  //This part of the function gets the time and convertes it to 12 hour with AM and PM
 			  var hh = thisDate.getHours();
@@ -68,32 +60,22 @@ Copy this javascript to your project:
 			    h = hh-12;
 			    dd = "PM";
 			  }
-
 			  if (h == 0) {
 			    h = 12;
 			  }
-
 			  m = m<10?"0"+m:m;
-
 			  h = h<10?"0"+h:h;
-
 			  jQuery("#" + target).siblings(".digi-time").html(h + ":" + m + " " + dd);
-
 			  if (dd === "PM") {
 			    jQuery("#" + target).find('circle').css('fill','#eee');
 			  }
 
-
 			  //This part of the function extracts the date and returns is in the format {Month xx}
 			  var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-
 			  var today = thisDate.getDate();
 			  var thisMonth = monthNames[thisDate.getMonth()];
-
 			  var todaysDate = thisMonth + " " + today;
-
 			  jQuery("#" + target).siblings(".date").html(todaysDate);
-
 			  var hours = timeZoneTime;
 			  var minutes = thisDate.getMinutes();
 			  var seconds = thisDate.getSeconds();
