@@ -1,7 +1,7 @@
 time-zone-clocks
 ================
 
-[![](https://raw.github.com/Claromentis/time-zone-clocks/master/screenshot.png)](https://raw.github.com/Claromentis/time-zone-clocks/master/screenshot.png)
+[![](https://raw.github.com/Claromentis/cla-time-zone-clocks/master/screenshot.png)](https://raw.github.com/Claromentis/time-zone-clocks/master/screenshot.png)
 
 JS clocks drawn using canvas
 
