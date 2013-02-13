@@ -7,7 +7,7 @@ Object Orientated time zone clocks using highcharts.
 
 Note: This needs the included version of the higcharts library and therefore will not work on pages that already include our core version.
 
-Include the required JavaScript from your HTML page
+Include the required JavaScript from your HTML page:
 
 ```html
 
@@ -29,6 +29,19 @@ Your markup should look something like this:
 	<div id="jst"></div>
 
 	<small class="date"></small>
+
+```
+
+Then just instantiate as follows:
+
+```html
+
+	<script type="text/javascript">
+	
+		var jstClock = new Clock("jst","9");
+		jstClock.drawClock();
+
+	</script>
 
 ```
 
