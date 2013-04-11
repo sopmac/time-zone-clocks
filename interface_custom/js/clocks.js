@@ -6,8 +6,14 @@ var Clock = function(id, diff) {
 
 Clock.prototype.drawClock = function() {
 
-  var diff = this.diff;
-  var target = this.id;
+  var diff = this.diff,
+    target = this.id,
+    halfHour = false;
+
+  // check diff for .5= 30 mins
+  if( diff.indexOf('.5') !== -1) {
+    halfHour = true;
+  }
 
   /**
    * Get the current time
@@ -15,9 +21,18 @@ Clock.prototype.drawClock = function() {
   function getNow() {
 
     var now = new Date();
+    if( halfHour ) {
+      now = new Date(now.getTime() + 30 * 60000);
+    }
+
+    var hrs = (now.getHours() + now.getMinutes() / 60) + (now.getTimezoneOffset() / 60) + parseInt(diff, 10);
+    // check for 24 hour clock
+    if(hrs >= 24 ) {
+      hrs = hrs-24;
+    }
 
     return {
-      hours: (now.getHours() + now.getMinutes() / 60) + (now.getTimezoneOffset() / 60) + parseInt(diff, 10),
+      hours: hrs,
       minutes: now.getMinutes() * 12 / 60 + now.getSeconds() * 12 / 3600,
       seconds: now.getSeconds() * 12 / 60
     };
@@ -28,6 +43,12 @@ Clock.prototype.drawClock = function() {
     var now = new Date();
     var timeZoneTime = (parseInt(now.getHours() + (now.getTimezoneOffset() / 60), 10)) + parseInt(diff, 10);
     var thisDate = dateAdd('h', now, (now.getTimezoneOffset() / 60) + parseInt(diff, 10));
+    
+
+    // check diff for .5= 30 mins
+    if( halfHour ) {
+      thisDate = new Date(thisDate.getTime() + 30 * 60000);
+    }
 
     //This part of the function gets the time and convertes it to 12 hour with AM and PM
     var hh = thisDate.getHours();
@@ -36,12 +57,12 @@ Clock.prototype.drawClock = function() {
     var h = hh;
 
     if (h >= 12) {
-    h = hh-12;
-    dd = "PM";
+      h = hh-12;
+      dd = "PM";
     }
 
     if (h === 0) {
-    h = 12;
+      h = 12;
     }
 
     m = m<10?"0"+m:m;
